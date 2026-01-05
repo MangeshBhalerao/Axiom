@@ -1,29 +1,49 @@
 import os
 from pathlib import Path
+from collections import defaultdict
 
-extensions = {".py",".js"}
-
-def scan_directory_os_walk(directory_path):
+def count_files_by_extension(directory_path):
+     print(f"--- Scanning Directory: {directory_path} ---\n")
      
-     print(f"--- Scanning Directory: {directory_path} ---")
-
+     # Dictionary to store extension counts
+     extension_count = defaultdict(int)
+     total_files = 0
+     total_directories = 0
+     
+     # Walk through directory
      for dirpath, dirnames, filenames in os.walk(directory_path):
-          print(f"\nCurrently in directory: {dirpath}")
+          total_directories += len(dirnames)
           
-          if not dirnames and not filenames:
-               print("  (Empty directory)")
-          
-          for dirname in dirnames:
-               print(f"  [Directory]: {os.path.join(dirpath, dirname)}")
-
-          counting_files = len(filenames)
-          print(f"  Total files in this directory: {counting_files}")
-          
-          extensions_files = [f for f in filenames if any(f.endswith(ext) for ext in extensions)]
-          print(f"  Files with specified extensions: {len(extensions_files)}")
-          
+          # Count files by extension
           for filename in filenames:
-               print(f"  [File]: {os.path.join(dirpath, filename)}")
+               total_files += 1
+               # Get file extension (including the dot)
+               _, ext = os.path.splitext(filename)
+               
+               # If no extension, mark as "no extension"
+               if ext == "":
+                    ext = "[no extension]"
+               
+               extension_count[ext] += 1
+     
+     # Print results
+     print("=" * 50)
+     print(f"Total Directories: {total_directories}")
+     print(f"Total Files: {total_files}")
+     print("=" * 50)
+     print("\nFiles by Extension:")
+     print("-" * 50)
+     
+     # Sort by count (descending)
+     sorted_extensions = sorted(extension_count.items(), key=lambda x: x[1], reverse=True)
+     
+     for ext, count in sorted_extensions:
+          percentage = (count / total_files * 100) if total_files > 0 else 0
+          print(f"  {ext:<20} : {count:>5} files ({percentage:>5.1f}%)")
+     
+     print("=" * 50)
+     
+     return extension_count
 
-# Example usage: Replace '.' with your target directory path
-scan_directory_os_walk('/home/mangesh/Coding/practice/Backend/1.Routing')
+
+count_files_by_extension('/home/mangesh/Coding/practice')
