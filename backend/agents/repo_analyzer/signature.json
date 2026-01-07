@@ -1,0 +1,312 @@
+{
+     "title": "Repository Analyzer Framework Detection",
+     "version": "1.0",
+     "languages": {
+     "python": {
+     "dependency_files": ["requirements.txt", "Pipfile", "pyproject.toml", "setup.py", "poetry.lock", "Pipfile.lock"],
+     "file_extensions": [".py"],
+     "frameworks": {
+        "django": {
+          "dependency_keywords": ["django", "Django"],
+          "import_patterns": ["import django", "from django"],
+          "config_files": ["manage.py", "settings.py", "wsgi.py"],
+          "folder_patterns": ["apps/", "migrations/"]
+        },
+        "fastapi": {
+          "dependency_keywords": ["fastapi", "FastAPI"],
+          "import_patterns": ["from fastapi import", "import fastapi"],
+          "config_files": ["main.py"],
+          "folder_patterns": ["routers/", "api/"]
+        },
+        "flask": {
+          "dependency_keywords": ["flask", "Flask"],
+          "import_patterns": ["from flask import", "import flask"],
+          "config_files": ["app.py", "wsgi.py"],
+          "folder_patterns": ["templates/", "static/"]
+        },
+        "streamlit": {
+          "dependency_keywords": ["streamlit"],
+          "import_patterns": ["import streamlit"],
+          "config_files": [".streamlit/"],
+          "folder_patterns": ["pages/"]
+        },
+        "pytorch": {
+          "dependency_keywords": ["torch", "pytorch"],
+          "import_patterns": ["import torch", "from torch import"],
+          "config_files": [],
+          "folder_patterns": ["models/", "data/"]
+        },
+        "tensorflow": {
+          "dependency_keywords": ["tensorflow", "tensorflow-gpu"],
+          "import_patterns": ["import tensorflow", "from tensorflow import"],
+          "config_files": [],
+          "folder_patterns": ["models/", "data/"]
+        },
+        "scrapy": {
+          "dependency_keywords": ["scrapy", "Scrapy"],
+          "import_patterns": ["import scrapy", "from scrapy"],
+          "config_files": ["scrapy.cfg"],
+          "folder_patterns": ["spiders/"]
+        }
+      }
+    },
+    "javascript": {
+      "dependency_files": ["package.json", "yarn.lock", "pnpm-lock.yaml", "package-lock.json"],
+      "file_extensions": [".js", ".jsx", ".mjs"],
+      "frameworks": {
+        "react": {
+          "dependency_keywords": ["react", "react-dom"],
+          "import_patterns": ["import React", "from 'react'", "from \"react\""],
+          "config_files": ["jsconfig.json"],
+          "folder_patterns": ["components/", "src/"]
+        },
+        "vue": {
+          "dependency_keywords": ["vue", "@vue/cli"],
+          "import_patterns": ["import Vue", "from 'vue'", "from \"vue\""],
+          "config_files": ["vue.config.js"],
+          "folder_patterns": ["components/", "views/"]
+        },
+        "angular": {
+          "dependency_keywords": ["@angular/core", "@angular/cli"],
+          "import_patterns": ["from '@angular", "import { Component }"],
+          "config_files": ["angular.json"],
+          "folder_patterns": ["app/", "src/app/"]
+        },
+        "express": {
+          "dependency_keywords": ["express"],
+          "import_patterns": ["require('express')", "from 'express'"],
+          "config_files": ["app.js", "server.js"],
+          "folder_patterns": ["routes/", "middleware/"]
+        },
+        "nextjs": {
+          "dependency_keywords": ["next", "next/react"],
+          "import_patterns": ["from 'next'", "import next"],
+          "config_files": ["next.config.js", "next.config.mjs"],
+          "folder_patterns": ["pages/", "app/"]
+        },
+        "nestjs": {
+          "dependency_keywords": ["@nestjs/core", "@nestjs/common"],
+          "import_patterns": ["from '@nestjs"],
+          "config_files": ["nest-cli.json"],
+          "folder_patterns": ["src/"]
+        },
+        "svelte": {
+          "dependency_keywords": ["svelte"],
+          "import_patterns": [".svelte"],
+          "config_files": ["svelte.config.js"],
+          "folder_patterns": ["routes/", "lib/"]
+        }
+      }
+    },
+    "typescript": {
+      "dependency_files": ["package.json", "yarn.lock", "pnpm-lock.yaml"],
+      "file_extensions": [".ts", ".tsx"],
+      "frameworks": {
+        "react": {
+          "dependency_keywords": ["react", "@types/react"],
+          "import_patterns": ["import React", "from 'react'"],
+          "config_files": ["tsconfig.json"],
+          "folder_patterns": ["components/", "src/"]
+        },
+        "angular": {
+          "dependency_keywords": ["@angular/core"],
+          "import_patterns": ["from '@angular"],
+          "config_files": ["tsconfig.json", "angular.json"],
+          "folder_patterns": ["app/"]
+        },
+        "nextjs": {
+          "dependency_keywords": ["next"],
+          "import_patterns": ["from 'next'"],
+          "config_files": ["next.config.ts", "tsconfig.json"],
+          "folder_patterns": ["pages/", "app/"]
+        }
+      }
+    },
+    "java": {
+      "dependency_files": ["pom.xml", "build.gradle", "build.gradle.kts", "gradle.properties"],
+      "file_extensions": [".java"],
+      "frameworks": {
+        "spring": {
+          "dependency_keywords": ["spring-boot", "spring-framework", "org.springframework"],
+          "import_patterns": ["import org.springframework", "import org.spring"],
+          "config_files": ["application.properties", "application.yml"],
+          "folder_patterns": ["src/main/java/", "src/main/resources/"]
+        },
+        "hibernate": {
+          "dependency_keywords": ["hibernate", "org.hibernate"],
+          "import_patterns": ["import org.hibernate"],
+          "config_files": ["hibernate.cfg.xml"],
+          "folder_patterns": ["entity/", "model/"]
+        },
+        "maven": {
+          "dependency_keywords": [],
+          "import_patterns": [],
+          "config_files": ["pom.xml"],
+          "folder_patterns": ["src/main/", "src/test/"]
+        },
+        "gradle": {
+          "dependency_keywords": [],
+          "import_patterns": [],
+          "config_files": ["build.gradle", "settings.gradle"],
+          "folder_patterns": ["src/main/", "src/test/"]
+        }
+      }
+    },
+    "ruby": {
+      "dependency_files": ["Gemfile", "Gemfile.lock"],
+      "file_extensions": [".rb"],
+      "frameworks": {
+        "rails": {
+          "dependency_keywords": ["rails"],
+          "import_patterns": ["require 'rails'"],
+          "config_files": ["config/application.rb", "Rakefile"],
+          "folder_patterns": ["app/", "config/", "db/"]
+        },
+        "sinatra": {
+          "dependency_keywords": ["sinatra"],
+          "import_patterns": ["require 'sinatra'"],
+          "config_files": ["config.ru"],
+          "folder_patterns": ["views/", "public/"]
+        }
+      }
+    },
+    "go": {
+      "dependency_files": ["go.mod", "go.sum"],
+      "file_extensions": [".go"],
+      "frameworks": {
+        "gin": {
+          "dependency_keywords": ["gin-gonic/gin"],
+          "import_patterns": ["github.com/gin-gonic/gin"],
+          "config_files": ["main.go"],
+          "folder_patterns": ["handlers/", "routes/"]
+        },
+        "echo": {
+          "dependency_keywords": ["labstack/echo"],
+          "import_patterns": ["github.com/labstack/echo"],
+          "config_files": ["main.go"],
+          "folder_patterns": ["handlers/"]
+        },
+        "fiber": {
+          "dependency_keywords": ["gofiber/fiber"],
+          "import_patterns": ["github.com/gofiber/fiber"],
+          "config_files": ["main.go"],
+          "folder_patterns": ["routes/"]
+        }
+      }
+    },
+    "php": {
+      "dependency_files": ["composer.json", "composer.lock"],
+      "file_extensions": [".php"],
+      "frameworks": {
+        "laravel": {
+          "dependency_keywords": ["laravel/framework"],
+          "import_patterns": ["use Illuminate"],
+          "config_files": ["artisan", "config/app.php"],
+          "folder_patterns": ["app/", "routes/", "resources/"]
+        },
+        "symfony": {
+          "dependency_keywords": ["symfony/symfony"],
+          "import_patterns": ["use Symfony"],
+          "config_files": ["symfony.lock", "config/services.yaml"],
+          "folder_patterns": ["src/", "config/"]
+        },
+        "wordpress": {
+          "dependency_keywords": [],
+          "import_patterns": ["wp-config", "wp-content"],
+          "config_files": ["wp-config.php"],
+          "folder_patterns": ["wp-content/", "wp-includes/"]
+        }
+      }
+    },
+    "rust": {
+      "dependency_files": ["Cargo.toml", "Cargo.lock"],
+      "file_extensions": [".rs"],
+      "frameworks": {
+        "actix": {
+          "dependency_keywords": ["actix-web"],
+          "import_patterns": ["use actix_web"],
+          "config_files": ["Cargo.toml"],
+          "folder_patterns": ["src/"]
+        },
+        "rocket": {
+          "dependency_keywords": ["rocket"],
+          "import_patterns": ["use rocket"],
+          "config_files": ["Rocket.toml"],
+          "folder_patterns": ["src/"]
+        }
+      }
+    },
+    "csharp": {
+      "dependency_files": ["*.csproj", "*.sln", "packages.config", "project.json"],
+      "file_extensions": [".cs"],
+      "frameworks": {
+        "dotnet": {
+          "dependency_keywords": ["Microsoft.NET"],
+          "import_patterns": ["using System", "using Microsoft"],
+          "config_files": ["appsettings.json", "Program.cs"],
+          "folder_patterns": ["Controllers/", "Models/", "Views/"]
+        },
+        "aspnet": {
+          "dependency_keywords": ["Microsoft.AspNetCore"],
+          "import_patterns": ["using Microsoft.AspNetCore"],
+          "config_files": ["Startup.cs", "Program.cs"],
+          "folder_patterns": ["Controllers/", "Models/"]
+        },
+        "unity": {
+          "dependency_keywords": [],
+          "import_patterns": ["using UnityEngine"],
+          "config_files": ["ProjectSettings/"],
+          "folder_patterns": ["Assets/", "ProjectSettings/"]
+        }
+      }
+    },
+    "swift": {
+      "dependency_files": ["Package.swift", "Podfile"],
+      "file_extensions": [".swift"],
+      "frameworks": {
+        "vapor": {
+          "dependency_keywords": ["vapor"],
+          "import_patterns": ["import Vapor"],
+          "config_files": ["Package.swift"],
+          "folder_patterns": ["Sources/", "Resources/"]
+        },
+        "swiftui": {
+          "dependency_keywords": [],
+          "import_patterns": ["import SwiftUI"],
+          "config_files": [],
+          "folder_patterns": ["Views/", "Models/"]
+        }
+      }
+    },
+    "kotlin": {
+      "dependency_files": ["build.gradle.kts", "build.gradle", "pom.xml"],
+      "file_extensions": [".kt"],
+      "frameworks": {
+        "ktor": {
+          "dependency_keywords": ["ktor"],
+          "import_patterns": ["import io.ktor"],
+          "config_files": ["application.conf"],
+          "folder_patterns": ["src/"]
+        },
+        "android": {
+          "dependency_keywords": ["com.android"],
+          "import_patterns": ["import android"],
+          "config_files": ["AndroidManifest.xml"],
+          "folder_patterns": ["app/", "res/"]
+        }
+      }
+    },
+    "dart": {
+      "dependency_files": ["pubspec.yaml", "pubspec.lock"],
+      "file_extensions": [".dart"],
+      "frameworks": {
+        "flutter": {
+          "dependency_keywords": ["flutter"],
+          "import_patterns": ["import 'package:flutter"],
+          "config_files": ["pubspec.yaml"],
+          "folder_patterns": ["lib/", "android/", "ios/"]
+        }
+      }
+    }
+  }
+}

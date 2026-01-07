@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from collections import defaultdict
 
+
 def count_files_by_extension(directory_path):
      print(f"--- Scanning Directory: {directory_path} ---\n")
      
@@ -16,6 +17,7 @@ def count_files_by_extension(directory_path):
           
           # Count files by extension
           for filename in filenames:
+               
                total_files += 1
                # Get file extension (including the dot)
                _, ext = os.path.splitext(filename)
@@ -25,7 +27,16 @@ def count_files_by_extension(directory_path):
                     ext = "[no extension]"
                
                extension_count[ext] += 1
-     
+
+               if filename == 'requirements.txt':
+                    file_path = os.path.join(dirpath, filename)
+                    with open(file_path, 'r', encoding='utf-8') as file:
+                         content = file.read()
+                         # if content == "fastapi" or "django":
+                         if "fastapi" in content or "django" in content:
+                              print("fastapi it is")
+
+
      # Print results
      print("=" * 50)
      print(f"Total Directories: {total_directories}")
