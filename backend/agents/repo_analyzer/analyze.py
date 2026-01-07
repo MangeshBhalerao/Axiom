@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from collections import defaultdict
-
+import json
 
 def count_files_by_extension(directory_path):
      print(f"--- Scanning Directory: {directory_path} ---\n")
@@ -28,14 +28,6 @@ def count_files_by_extension(directory_path):
                
                extension_count[ext] += 1
 
-               if filename == 'requirements.txt':
-                    file_path = os.path.join(dirpath, filename)
-                    with open(file_path, 'r', encoding='utf-8') as file:
-                         content = file.read()
-                         # if content == "fastapi" or "django":
-                         if "fastapi" in content or "django" in content:
-                              print("fastapi it is")
-
 
      # Print results
      print("=" * 50)
@@ -46,7 +38,7 @@ def count_files_by_extension(directory_path):
      print("-" * 50)
      
      # Sort by count (descending)
-     sorted_extensions = sorted(extension_count.items(), key=lambda x: x[1], reverse=True)
+     sorted_extensions = sorted(extension_count.items(), key=lambda x: x[1], reverse= True)
      
      for ext, count in sorted_extensions:
           percentage = (count / total_files * 100) if total_files > 0 else 0
@@ -54,6 +46,8 @@ def count_files_by_extension(directory_path):
      
      print("=" * 50)
      
+               
+
      return extension_count
 
 

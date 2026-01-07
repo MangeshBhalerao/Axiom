@@ -1,11 +1,11 @@
 {
-     "title": "Repository Analyzer Framework Detection",
-     "version": "1.0",
-     "languages": {
-     "python": {
-     "dependency_files": ["requirements.txt", "Pipfile", "pyproject.toml", "setup.py", "poetry.lock", "Pipfile.lock"],
-     "file_extensions": [".py"],
-     "frameworks": {
+    "title": "Repository Analyzer Framework Detection",
+    "version": "1.0",
+    "languages": {
+      "python": {
+      "dependency_files": ["requirements.txt", "Pipfile", "pyproject.toml", "setup.py", "poetry.lock", "Pipfile.lock"],
+      "file_extensions": [".py"],
+      "frameworks": {
         "django": {
           "dependency_keywords": ["django", "Django"],
           "import_patterns": ["import django", "from django"],
