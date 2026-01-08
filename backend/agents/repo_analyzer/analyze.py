@@ -46,9 +46,18 @@ def count_files_by_extension(directory_path):
      
      print("=" * 50)
      
-               
+     # Return both raw counts and sorted list (highest first)
+     return {
+          "extension_count": dict(extension_count),
+          "sorted_extensions": sorted_extensions,  # List of tuples: [(ext, count), ...]
+          "total_files": total_files,
+          "total_directories": total_directories
+     }
 
-     return extension_count
+
+# Only run if this file is executed directly (not when imported)
+if __name__ == "__main__":
+     count_files_by_extension('/home/mangesh/Coding/practice')
 
 
-count_files_by_extension('/home/mangesh/Coding/practice')
+
