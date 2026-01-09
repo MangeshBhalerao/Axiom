@@ -1,0 +1,2 @@
+[console_scripts]
+axiom = cli:main

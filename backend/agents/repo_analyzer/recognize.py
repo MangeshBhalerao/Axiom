@@ -34,8 +34,17 @@ def recognize_frameworks(directory_path):
      signatures = load_signature(signature_path)
      
      # Step 4: Find all files with the top extension
+     SKIP_DIRS = {
+          'node_modules', '__pycache__', '.git',
+          'dist', 'build', '.nuxt',
+          'target', 'vendor', '.idea', '.vscode'
+     }
+     
      files_to_scan = []
      for dirpath, dirnames, filenames in os.walk(directory_path):
+          # Skip unwanted directories
+          dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+          
           for filename in filenames:
                if filename.endswith(top_extension):
                     files_to_scan.append(os.path.join(dirpath, filename))

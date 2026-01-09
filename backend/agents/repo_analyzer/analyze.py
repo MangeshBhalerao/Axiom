@@ -11,8 +11,17 @@ def count_files_by_extension(directory_path):
      total_files = 0
      total_directories = 0
      
+     # Directories to skip
+     SKIP_DIRS = {
+          'node_modules', '__pycache__', '.git', '.venv', 'venv',
+          'env', '.env', 'dist', 'build', '.next', '.nuxt',
+          'target', 'vendor', '.idea', '.vscode'
+     }
+     
      # Walk through directory
      for dirpath, dirnames, filenames in os.walk(directory_path):
+          # Skip unwanted directories
+          dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
           total_directories += len(dirnames)
           
           # Count files by extension
